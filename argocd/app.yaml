@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vinyl
+  namespace: argocd
+spec:
+  destination:
+    namespace: vinyl-app
+    server: https://kubernetes.default.svc
+  source:
+    path: vinyl-app/k8s
+    repoURL: https://github.com/hibaarsi/pagWebKub
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
