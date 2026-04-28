@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: front
-          image: vinyl-front:1.1.0
+          image: vinyl-front:1.0.0
           imagePullPolicy: Never
           ports:
             - containerPort: 80
