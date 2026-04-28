@@ -1,0 +1,64 @@
+/* Fondo rosa claro y fuente limpia */
+body {
+    background-color: #fce4ec; /* Rosa suave */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    padding: 50px;
+    margin: 0;
+    text-align: center;
+}
+
+h1 {
+    color: #880e4f;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+/* Contenedor que alinea los discos automáticamente */
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* La tarjeta del vinilo */
+.disco {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+/* Animación al pasar el mouse */
+.disco:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* Las portadas */
+.disco img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Cuadrado perfecto */
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/* Estilo de los nombres */
+.artista {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.album {
+    color: #ad1457;
+    font-size: 0.9em;
+    margin: 0;
+    font-style: italic;
+}
