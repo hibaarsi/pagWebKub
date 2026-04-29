@@ -4,14 +4,17 @@ metadata:
   name: vinyl-app
   namespace: argocd
 spec:
-  destination:
-    namespace: vinyl-app
-    server: https://kubernetes.default.svc
+  project: default
   source:
-    path: vinyl-app/k8s
-    repoURL: https://github.com/hibaarsi/pagWebKub
+    repoURL: https://github.com/hibaarsi/pagWebKub.git
     targetRevision: HEAD
+    path: vinyl-app/k8s
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: vinyl-app
   syncPolicy:
     automated:
-      prune: false
-      selfHeal: false
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
