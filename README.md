@@ -41,12 +41,27 @@ La imagen se llama vinyl-front:1.0.0, indicando que es la primera versión de la
    En la carpeta docs/ se podrán observar en las capturas como seguimos este proceso 
  5.1. Preparación
    minikube start --driver=docker
-   ./scripts/install-tools.sh ( solo si no está instalado)
  5.2. Construir aplicación
-   eval $(minikube docker-env)
    ./scripts/build-vinyl.sh
- 5.3 Gitops
-   kubectl apply -f argocd/app.yaml
+ este script tiene todo lo necesario para hacer la imagen 
+ 5.3 ArgoCD
+   kubectl create namespace argocd
+   kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+  Deja pasar un minuto
+kubectl apply -f argocd/app.yaml
+
+Para ver en terminal como está el cluster
+kubectl get application -n argocd
+kubectl get pods -n vinyl-app 
+
+Para meterse en Argo CD
+1. Saca la contraseña
+   kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+2. Abre túnel
+   kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+5.4. Página funcionando
+   minikube service front -n vinyl-app
 
 6. Posibles mejoras
 Se podría implementar un sistema de autenticación en la página y una base de datos, y ahí 
