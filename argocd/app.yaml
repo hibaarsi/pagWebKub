@@ -11,8 +11,6 @@ spec:
     path: vinyl-app/k8s
     repoURL: https://github.com/hibaarsi/pagWebKub
     targetRevision: HEAD
-  sources: []
-  project: default
   syncPolicy:
     automated:
       prune: false
